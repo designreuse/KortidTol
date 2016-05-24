@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class MapsTools {
+public class MapTools {
 
   /*
       From: http://stackoverflow.com/a/31791765
