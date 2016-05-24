@@ -1,0 +1,2 @@
+# KortidTol
+Kortið tól
