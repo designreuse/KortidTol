@@ -1,2 +1,2 @@
-# KortidTol
-Kortið tól
+# Kortið tól
+Map tools for Android. 
