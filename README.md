@@ -1,5 +1,5 @@
 # Kortið tól
-Map tools for Android. 
+Map tools for Android. There must be hundreds of utilities called 'map tool' which Google translates into Icelandic as Kortið tól, for no other reason than I love Iceland.
 
 ##Limit Bounds
 
