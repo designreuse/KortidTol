@@ -25,3 +25,17 @@ LatLngBounds threePeaksBounds = MapTools.createBounds(MIN_LAT, MAX_LAT, MIN_LON,
 LatLng[] multipleCoords = ...
 LatLngBounds threePeaksBounds = MapTools.createBounds(multipleCoords);
 ```
+
+##Nearest Index
+
+Find the nearest index in an array of coordinates to a point, for example when a user long-clicks on a map near a route, find the nearest point on the route:
+
+```java
+map.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
+  @Override public void onMapLongClick(LatLng latLng) {
+    int nearestIndex = MapTools.nearestIndex(routeCoords, latLng);
+    LatLng nearestRoutePoint = routeCoords.get(nearestIndex);
+  }
+});
+```
+
