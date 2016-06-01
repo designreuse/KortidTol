@@ -50,6 +50,7 @@ LongClickHelper longClickHelper = new LongClickHelper();
 
 map.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
   @Override public void onMapLongClick(LatLng latLng) {
+    vibrator.vibrate(175);
     longClickHelper.addPoint(latLng);
     if(longClickHelper.isReady()){
       LatLng startClick = longClickHelper.getStart();
