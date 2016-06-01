@@ -100,11 +100,42 @@ public class MapTools {
     line.zIndex(100);
     line.color(color);
 
+    if(startIndex > endIndex){
+      int temp = startIndex;
+      startIndex = endIndex;
+      endIndex = temp;
+    }
+
     for(LatLng ll : coords.subList(startIndex, endIndex)){
       line.add(ll);
     }
 
     sectionPolyline = map.addPolyline(line);
+  }
+
+  /*
+    Returns distance in meters of a subsection on a route (not as the crow flies)
+   */
+  public static float subsectionDistance(List<LatLng> coords, LatLng start, LatLng end){
+    int startIndex = nearestIndex(coords, start);
+    int endIndex = nearestIndex(coords, end);
+    return subsectionDistance(coords, startIndex, endIndex);
+  }
+  public static float subsectionDistance(List<LatLng> coords, int startIndex, int endIndex){
+    float distance = 0;
+    LatLng last = coords.get(startIndex);
+
+    if(startIndex > endIndex){
+      int temp = startIndex;
+      startIndex = endIndex;
+      endIndex = temp;
+    }
+
+    for(LatLng current : coords.subList(startIndex, endIndex)){
+      distance += distanceBetween(last, current);
+      last = current;
+    }
+    return distance;
   }
 
   public static float distanceBetween(LatLng a, LatLng b){
