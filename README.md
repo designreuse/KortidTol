@@ -39,7 +39,7 @@ map.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
 });
 ```
 
-##LongClickHelper
+##Long Click Helper and Draw Subsection
 
 Manage long-click events with a map to help draw a route subsection.
 
@@ -54,7 +54,7 @@ map.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
     if(longClickHelper.isReady()){
       LatLng startClick = longClickHelper.getStart();
       LatLng endClick = longClickHelper.getEnd();
-      //...
+      MapTools.drawSubsection(map, routeCoords, startClick, endClick, Color.parseColor("#ff00cc"));
     }
   }
 });
