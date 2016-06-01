@@ -26,7 +26,7 @@ public class MapTools {
     }
 
     public static void limitBounds(GoogleMap map, CameraPosition cameraPosition, LatLngBounds bounds, float minZoom) {
-        if (bounds.contains(map.getCameraPosition().target)) {
+        if (bounds.contains(map.getCameraPosition().target) && cameraPosition.zoom > minZoom) {
             return;
         }
 
