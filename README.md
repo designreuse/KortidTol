@@ -39,3 +39,20 @@ map.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
 });
 ```
 
+##LongClickHelper
+
+Manage long-click events with a map to help draw a route subsection.
+
+```java
+map.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
+  @Override public void onMapLongClick(LatLng latLng) {
+    longClickHelper.addPoint(latLng);
+    if(longClickHelper.isReady()){
+      LatLng startClick = longClickHelper.getStart();
+      LatLng endClick = longClickHelper.getEnd();
+      //...
+    }
+  }
+});
+```
+
