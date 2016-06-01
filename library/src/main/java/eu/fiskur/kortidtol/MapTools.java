@@ -1,5 +1,6 @@
 package eu.fiskur.kortidtol;
 
+import android.location.Location;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.CameraPosition;
@@ -60,6 +61,28 @@ public class MapTools {
       LatLng targetLatLng = new LatLng(targetLat, targetLong);
       map.animateCamera(CameraUpdateFactory.newLatLngZoom(targetLatLng, targetZoom));
     }
+  }
+
+  public static int nearestIndex(List<LatLng> coords, LatLng target){
+    int nearestIndex = 0;
+    float minDistance = Float.MAX_VALUE;
+    int index = 0;
+    for(LatLng coord : coords){
+      float distance = distanceBetween(coord, target);
+      if(distance < minDistance){
+        minDistance = distance;
+        nearestIndex = index;
+      }
+      index++;
+    }
+
+    return nearestIndex;
+  }
+
+  public static float distanceBetween(LatLng a, LatLng b){
+    float[] results = new float[1];
+    Location.distanceBetween(a.latitude, a.longitude, b.latitude, b.longitude, results);
+    return results[0];
   }
 
   /*
