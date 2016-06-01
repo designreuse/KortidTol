@@ -7,12 +7,16 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 
+import com.google.android.gms.maps.model.Polyline;
+import com.google.android.gms.maps.model.PolylineOptions;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class MapTools {
+
+  private static Polyline sectionPolyline = null;
 
   public static LatLngBounds createBounds(double minLatitude, double maxLatitude, double minLongitude, double maxLongitude) {
     return new LatLngBounds(new LatLng(minLatitude, minLongitude),
@@ -77,6 +81,30 @@ public class MapTools {
     }
 
     return nearestIndex;
+  }
+
+  public static void drawSubsection(GoogleMap map, List<LatLng> coords, LatLng start, LatLng end, int color){
+    int startIndex = nearestIndex(coords, start);
+    int endIndex = nearestIndex(coords, end);
+    drawSubsection(map, coords, startIndex, endIndex, color);
+  }
+
+  public static void drawSubsection(GoogleMap map, List<LatLng> coords, int startIndex, int endIndex, int color){
+    if(sectionPolyline != null){
+      sectionPolyline.remove();
+    }
+
+    PolylineOptions line = new PolylineOptions();
+    line.geodesic(true);
+    line.width(20);
+    line.zIndex(100);
+    line.color(color);
+
+    for(LatLng ll : coords.subList(startIndex, endIndex)){
+      line.add(ll);
+    }
+
+    sectionPolyline = map.addPolyline(line);
   }
 
   public static float distanceBetween(LatLng a, LatLng b){
