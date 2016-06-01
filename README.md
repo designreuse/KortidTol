@@ -61,3 +61,10 @@ map.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
 });
 ```
 
+##Subsection Distance
+
+Calculate the distance of a subsection of a route
+
+```java
+float meters = MapTools.subsectionDistance(routeCoords, startClick, endClick);
+```
