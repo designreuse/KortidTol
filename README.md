@@ -1,5 +1,5 @@
 # Kortið tól
-Map tools for Android. Google translates 'map tool' into Icelandic as Kortið tól, used because Iceland is beautiful and to avoid clashes with such a generic utility name.
+Map tools for Android. Google translates 'map tool' into Icelandic as Kortið tól, used because I occasionally daydream about moving to Reykjavík.
 
 ##Limit Bounds
 
@@ -66,5 +66,5 @@ map.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
 Calculate the distance of a subsection of a route
 
 ```java
-float meters = MapTools.subsectionDistance(routeCoords, startClick, endClick);
+float meters = MapTools.subsectionDistance(routeCoords, startCoord, endCoord);
 ```
