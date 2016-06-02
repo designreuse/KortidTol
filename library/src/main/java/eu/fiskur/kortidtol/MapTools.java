@@ -9,6 +9,8 @@ import com.google.android.gms.maps.model.LatLngBounds;
 
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
+
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -96,7 +98,7 @@ public class MapTools {
 
     PolylineOptions line = new PolylineOptions();
     line.geodesic(true);
-    line.width(20);
+    line.width(14);
     line.zIndex(100);
     line.color(color);
 
@@ -143,6 +145,19 @@ public class MapTools {
     Location.distanceBetween(a.latitude, a.longitude, b.latitude, b.longitude, results);
     return results[0];
   }
+
+    public static float metersToMiles(float meters){
+        return round((float) (meters / 1609.344), 2);
+    }
+
+    public static float metersToKM(float meters){
+        return round((float) (meters / 1000), 2);
+    }
+
+    private static float round(float d, int decimalPlace) {
+        return BigDecimal.valueOf(d).setScale(decimalPlace, BigDecimal.ROUND_HALF_UP).floatValue();
+    }
+
 
   /*
       From: http://stackoverflow.com/a/31791765
