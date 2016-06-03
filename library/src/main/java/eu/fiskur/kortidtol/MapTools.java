@@ -115,6 +115,12 @@ public class MapTools {
     sectionPolyline = map.addPolyline(line);
   }
 
+    public static void removeSubsection(){
+        if(sectionPolyline != null){
+            sectionPolyline.remove();
+        }
+    }
+
   /*
     Returns distance in meters of a subsection on a route (not as the crow flies)
    */

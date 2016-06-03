@@ -23,7 +23,7 @@ public class MapToolsUnitTest {
     points.add(new LatLng(50.1985043, 2.104402));//SE
     points.add(new LatLng(52.3959891, -1.2004356));//Middle
 
-    LatLngBounds bounds = MapTools.getBounds(points);
+    LatLngBounds bounds = MapTools.createBounds(points);
     Assert.assertEquals(49.7720708, bounds.southwest.latitude);
     Assert.assertEquals(-5.6709004, bounds.southwest.longitude);
 
