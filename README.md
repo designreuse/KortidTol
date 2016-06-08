@@ -1,5 +1,5 @@
 # Kortið tól
-Map tools for Android. Google translates 'map tool' into Icelandic as Kortið tól, used because I occasionally daydream about moving to Reykjavík.
+Map tools for GoogleMaps on Android, developer for the [Yorkshire 3 Peaks app](https://play.google.com/store/apps/details?id=eu.fiskur.yorkshirethreepeaks). Google translates 'map tool' into Icelandic as Kortið tól, used because I occasionally daydream about moving to Reykjavík.
 
 ##Licence
 
