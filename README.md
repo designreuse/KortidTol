@@ -1,6 +1,18 @@
 # Kortið tól
 Map tools for Android. Google translates 'map tool' into Icelandic as Kortið tól, used because I occasionally daydream about moving to Reykjavík.
 
+##Licence
+
+Full licence here: https://github.com/fiskurgit/KortidTol/blob/master/LICENSE
+
+In short:
+
+> The MIT License is a permissive license that is short and to the point. It lets people do anything they want with your code as long as they provide attribution back to you and don’t hold you liable.
+
+##Known Issues
+* View lifecycle not implemented, doesn't handle orientation changes
+* Doesn't like large files
+
 ##Limit Bounds
 
 Limit the map to displaying a specific area, prevents the user scrolling away, useful if your app is local/location specific:
