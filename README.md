@@ -3,6 +3,31 @@
 
 Map tools for GoogleMaps on Android, developed for the [Yorkshire 3 Peaks app](https://play.google.com/store/apps/details?id=eu.fiskur.yorkshirethreepeaks). Google translates 'map tool' into Icelandic as Kortið tól, used because I occasionally daydream about moving to Reykjavík.
 
+##Dependency
+
+Add jitpack.io to your root build.gradle, eg:
+
+```groovy
+allprojects {
+    repositories {
+        jcenter()
+        maven { url "https://jitpack.io" }
+    }
+}
+```
+
+then add the dependency to your project build.gradle:
+
+```groovy
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.github.fiskurgit:KortidTol:1.0.1'
+}
+```
+You can find the latest version in the releases tab above: https://github.com/fiskurgit/KortidTol/releases
+
+More options at jitpack.io: https://jitpack.io/#fiskurgit/KortidTol
+
 ##Licence
 
 Full licence here: https://github.com/fiskurgit/KortidTol/blob/master/LICENSE
