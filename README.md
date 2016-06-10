@@ -1,5 +1,13 @@
 # Kortið tól
-Map tools for Android. Google translates 'map tool' into Icelandic as Kortið tól, used because Iceland is beautiful and to avoid clashes with such a generic utility name.
+Map tools for GoogleMaps on Android, developer for the [Yorkshire 3 Peaks app](https://play.google.com/store/apps/details?id=eu.fiskur.yorkshirethreepeaks). Google translates 'map tool' into Icelandic as Kortið tól, used because I occasionally daydream about moving to Reykjavík.
+
+##Licence
+
+Full licence here: https://github.com/fiskurgit/KortidTol/blob/master/LICENSE
+
+In short:
+
+> The MIT License is a permissive license that is short and to the point. It lets people do anything they want with your code as long as they provide attribution back to you and don’t hold you liable.
 
 ##Limit Bounds
 
@@ -61,3 +69,10 @@ map.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
 });
 ```
 
+##Subsection Distance
+
+Calculate the distance of a subsection of a route
+
+```java
+float meters = MapTools.subsectionDistance(routeCoords, startCoord, endCoord);
+```
