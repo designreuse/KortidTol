@@ -1,4 +1,6 @@
 # Kortið tól
+[![Release](https://jitpack.io/v/fiskurgit/KortidTol.svg)](https://jitpack.io/#fiskurgit/KortidTol) [![Build Status](https://travis-ci.org/fiskurgit/KortidTol.svg?branch=master)](https://travis-ci.org/fiskurgit/KortidTol) [![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://github.com/fiskurgit/KortidTol/blob/master/LICENSE)
+
 Map tools for GoogleMaps on Android, developer for the [Yorkshire 3 Peaks app](https://play.google.com/store/apps/details?id=eu.fiskur.yorkshirethreepeaks). Google translates 'map tool' into Icelandic as Kortið tól, used because I occasionally daydream about moving to Reykjavík.
 
 ##Licence
