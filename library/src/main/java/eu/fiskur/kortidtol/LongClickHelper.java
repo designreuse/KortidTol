@@ -21,7 +21,11 @@ public class LongClickHelper {
   }
 
   public boolean isReady(){
-    return 0 == (count & 1);
+    if(start == null){
+      return false;
+    }else {
+      return 0 == (count & 1);
+    }
   }
 
   public LatLng getStart(){
