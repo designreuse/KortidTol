@@ -102,13 +102,16 @@ public class MapTools {
     line.zIndex(100);
     line.color(color);
 
+    int start = startIndex;
+    int end = endIndex;
+
     if(startIndex > endIndex){
       int temp = startIndex;
-      startIndex = endIndex;
-      endIndex = temp;
+      start = endIndex;
+      end = temp;
     }
 
-    for(LatLng ll : coords.subList(startIndex, endIndex)){
+    for(LatLng ll : coords.subList(start, end)){
       line.add(ll);
     }
 
