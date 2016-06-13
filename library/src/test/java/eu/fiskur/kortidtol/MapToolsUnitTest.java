@@ -9,6 +9,6 @@ public class MapToolsUnitTest {
 
   @Test
   public void boundCalculation() throws Exception {
-    Assert.assertEquals(true, true);
+    //Assert.assertEquals(true, true);
   }
 }
