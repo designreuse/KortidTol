@@ -11,8 +11,6 @@ public class LongClickHelper {
 
   private int count = 10;
 
-  public LongClickHelper(){}
-
   public void addPoint(LatLng point){
     if((count%2)==0){
       start = point;
