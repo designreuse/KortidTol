@@ -136,13 +136,16 @@ public class MapTools {
     float distance = 0;
     LatLng last = coords.get(startIndex);
 
+    int start = startIndex;
+    int end = endIndex;
+
     if(startIndex > endIndex){
       int temp = startIndex;
-      startIndex = endIndex;
-      endIndex = temp;
+      start = endIndex;
+      end = temp;
     }
 
-    for(LatLng current : coords.subList(startIndex, endIndex)){
+    for(LatLng current : coords.subList(start, end)){
       distance += distanceBetween(last, current);
       last = current;
     }
