@@ -64,7 +64,8 @@ public class QuickHull {
       return clonedList;
     }
 
-    int minPoint = -1, maxPoint = -1;
+    int minPoint = -1;
+    int maxPoint = -1;
     int minX = Integer.MAX_VALUE;
     int maxX = Integer.MIN_VALUE;
     for (int i = 0; i < points.size(); i++) {
