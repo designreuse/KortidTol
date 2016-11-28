@@ -103,3 +103,22 @@ Calculate the distance of a subsection of a route
 ```java
 float meters = MapTools.subsectionDistance(routeCoords, startCoord, endCoord);
 ```
+
+##Quick Hull
+
+There's a [Quick Hull](https://en.wikipedia.org/wiki/Quickhull) implementation included (written by [Jared Rummler](http://jaredrummler.com/2014/11/13/android-bitmaps-convex-hull/)) which can be used for displaying the bounding shape of GeoJson polygons. Rather than expensive rendering of a shape consisting of thousands of points follow the steps below, you have to go round the houses a little, converting to points and back, I'll try and find time to convert the method so it can be done in a single pass at some point:
+
+```java
+List<LatLng> polygonPoints = MapTools.getPoints(jsonString);
+QuickHull quickHull = new QuickHull();
+ArrayList<Point> points = quickHull.convertToPoint(polygonPoints, map.getProjection());
+ArrayList<Point> hull = quickHull.quickHull(points);
+ArrayList<LatLng> hullLatLng = quickHull.convertToLatLng(hull, map.getProjection());
+Polygon hullPolygon = map.addPolygon(new PolygonOptions()
+  .addAll(hullLatLng)
+  .strokeColor(Color.parseColor("#22000000"))
+  .strokeWidth(0)
+  .fillColor(Color.parseColor("#22000000")));
+}
+
+```
