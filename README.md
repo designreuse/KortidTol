@@ -21,7 +21,7 @@ then add the dependency to your project build.gradle:
 ```groovy
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.github.fiskurgit:KortidTol:1.0.1'
+    compile 'com.github.fiskurgit:KortidTol:1.0.5'
 }
 ```
 You can find the latest version in the releases tab above: https://github.com/fiskurgit/KortidTol/releases
@@ -108,8 +108,21 @@ float meters = MapTools.subsectionDistance(routeCoords, startCoord, endCoord);
 
 <img src='images/convex_hull.png'>
 
-There's a [Quick Hull](https://en.wikipedia.org/wiki/Quickhull) implementation included (adapted from code by [Jared Rummler](http://jaredrummler.com/2014/11/13/android-bitmaps-convex-hull/)) which can be used for displaying the bounding shape of GeoJson polygons. Rather than expensive rendering of a shape consisting of thousands of points follow the steps below, you have to go round the houses a little, converting to points and back, I'll try and find time to convert the method so it can be done in a single pass at some point ([more detail here](http://fiskur.eu/markdown/2015-11-13-getting-a-convex-hull-from-geojson.md)):
+There's a [Quick Hull](https://en.wikipedia.org/wiki/Quickhull) implementation included (adapted from code by [Jared Rummler](http://jaredrummler.com/2014/11/13/android-bitmaps-convex-hull/)) which can be used for displaying the bounding shape of GeoJson polygons. Rather than expensive rendering of a shape consisting of thousands of points draw the bounding shape instead ([more detail here](http://fiskur.eu/markdown/2015-11-13-getting-a-convex-hull-from-geojson.md)). The new single-pass method calculates the hull of an array of 580 coordinates in 4ms, versus 66ms for the older method:
 
+### New method
+```java
+List<LatLng> polygonPoints = MapTools.getPoints(jsonString);
+ArrayList<LatLng> hullLatLng = new QuickHullLatLng.quickHull(polygonPoints);
+Polygon hullPolygon = map.addPolygon(new PolygonOptions()
+  .addAll(hullLatLng)
+  .strokeColor(Color.parseColor("#22000000"))
+  .strokeWidth(0)
+  .fillColor(Color.parseColor("#22000000")));
+}
+```
+
+### Old method (may be deprecated in future)
 ```java
 List<LatLng> polygonPoints = MapTools.getPoints(jsonString);
 QuickHull quickHull = new QuickHull();
@@ -122,5 +135,4 @@ Polygon hullPolygon = map.addPolygon(new PolygonOptions()
   .strokeWidth(0)
   .fillColor(Color.parseColor("#22000000")));
 }
-
 ```
