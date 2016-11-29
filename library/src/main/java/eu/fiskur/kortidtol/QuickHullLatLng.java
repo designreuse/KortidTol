@@ -1,6 +1,7 @@
 package eu.fiskur.kortidtol;
 
 import com.google.android.gms.maps.model.LatLng;
+import com.google.maps.android.SphericalUtil;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -102,11 +103,7 @@ public class QuickHullLatLng {
   }
 
   private static double distance(LatLng a, LatLng b, LatLng c) {
-    final double ABx = b.longitude - a.longitude;
-    final double ABy = b.latitude - a.latitude;
-    double dist = ABx * (a.latitude - c.latitude) - ABy * (a.longitude - c.longitude);
-    if (dist < 0) dist = -dist;
-    return dist;
+    return SphericalUtil.computeDistanceBetween(a, b) + SphericalUtil.computeDistanceBetween(b, c) + SphericalUtil.computeDistanceBetween(c, a);
   }
 
   private static int pointLocation(LatLng a, LatLng b, LatLng p) {
