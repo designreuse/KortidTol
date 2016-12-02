@@ -181,11 +181,10 @@ public class GrossoConcaveHull {
 
     Collection<QuadEdge> quadEdges = qes.getEdges();
     List<QuadEdgeTriangle> qeTriangles = QuadEdgeTriangle.createOn(qes);
-    Collection<Vertex> qeVertices =
-      qes.getVertices(false);
+    Collection<com.vividsolutions.jts.triangulate.quadedge.Vertex>  qeVertices = qes.getVertices(false);
 
     int iV = 0;
-    for (Vertex v : qeVertices) {
+    for (com.vividsolutions.jts.triangulate.quadedge.Vertex v : qeVertices) {
       this.coordinates.put(v.getCoordinate(), iV);
       this.vertices.put(iV, new Vertex(iV, v.getCoordinate()));
       iV++;
