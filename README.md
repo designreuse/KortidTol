@@ -104,11 +104,11 @@ Calculate the distance of a subsection of a route
 float meters = MapTools.subsectionDistance(routeCoords, startCoord, endCoord);
 ```
 
-##Quick Hull
+##Quick (Convex) Hull
 
 <img src='images/convex_hull.png'>
 
-There's a [Quick Hull](https://en.wikipedia.org/wiki/Quickhull) implementation included (adapted from code by [Jared Rummler](http://jaredrummler.com/2014/11/13/android-bitmaps-convex-hull/)) which can be used for displaying the bounding shape of GeoJson polygons. Rather than expensive rendering of a shape consisting of thousands of points draw the bounding shape instead ([more detail here](http://fiskur.eu/markdown/2015-11-13-getting-a-convex-hull-from-geojson.md)). The new single-pass method calculates the hull of an array of 580 coordinates in 4ms, versus 66ms for the older method:
+There's a [Quick Hull](https://en.wikipedia.org/wiki/Quickhull) implementation included (adapted from code by [Jared Rummler](http://jaredrummler.com/2014/11/13/android-bitmaps-convex-hull/)) which can be used for displaying the bounding shape ([Concave Hull](https://en.wikipedia.org/wiki/Convex_hull)) of GeoJson polygons. Rather than expensive rendering of a shape consisting of thousands of points draw the bounding shape instead ([more detail here](http://fiskur.eu/markdown/2015-11-13-getting-a-convex-hull-from-geojson.md)). The new single-pass method calculates the hull of an array of 580 coordinates in 4ms, versus 66ms for the older method:
 
 ### New method
 ```java
@@ -135,4 +135,18 @@ Polygon hullPolygon = map.addPolygon(new PolygonOptions()
   .strokeWidth(0)
   .fillColor(Color.parseColor("#22000000")));
 }
+```
+
+## Concave Hull
+
+There's also a Concave Hull method which uses [code by Eric Grosso](http://www.rotefabrik.free.fr/concave_hull/). This is much more complex than the Quick Hull implementation, a native 'single-pass' conversion is beyond my capabilities (or at least available time). The method converts the LatLng array to points and back again so it will be much slower than the new native Quick Hull method above.
+```java
+double threshold = 30;
+ConcaveHull concaveHull = new ConcaveHull(polygonPoints, threshold, map.getProjection());
+final List<LatLng> concaveLatLng = concaveHull.getHull();
+Polygon concavePolygon = map.addPolygon(new PolygonOptions()
+  .addAll(concaveLatLng)
+  .strokeColor(Color.parseColor("#66000000"))
+  .strokeWidth(0)
+  .fillColor(Color.parseColor("#66000000")));
 ```
