@@ -21,7 +21,7 @@ then add the dependency to your project build.gradle:
 ```groovy
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.github.fiskurgit:KortidTol:1.0.5'
+    compile 'com.github.fiskurgit:KortidTol:1.0.6'
 }
 ```
 You can find the latest version in the releases tab above: https://github.com/fiskurgit/KortidTol/releases
@@ -139,13 +139,13 @@ Polygon hullPolygon = map.addPolygon(new PolygonOptions()
 
 ## Concave Hull
 
-<img src='images/concave_hull.png'>
+<img src='images/concave_hulll.png'>
 
-There's also a Concave Hull method which uses [code by Eric Grosso](http://www.rotefabrik.free.fr/concave_hull/). This is much more complex than the Quick Hull implementation, a native 'single-pass' conversion is beyond my capabilities (or at least available time). The method converts the LatLng array to points and back again so it will be much slower than the new native Quick Hull method above.
+There's also a Concave Hull method which uses [code by Eric Grosso](http://www.rotefabrik.free.fr/concave_hull/). This is much more complex than the Quick Hull implementation, a native 'single-pass' conversion is beyond my capabilities (or at least available time). The method converts the LatLng array to points and back again so it will be much slower than the new native Quick Hull method above. A threshold of 30 reduces a ~5000 point polygon to ~800 points.
 ```java
+List<LatLng> polygonPoints = MapTools.getPoints(jsonString);
 double threshold = 30;
-ConcaveHull concaveHull = new ConcaveHull(polygonPoints, threshold, map.getProjection());
-final List<LatLng> concaveLatLng = concaveHull.getHull();
+List<LatLng> concaveLatLng = new ConcaveHull(polygonPoints, threshold, map.getProjection()).getHull();
 Polygon concavePolygon = map.addPolygon(new PolygonOptions()
   .addAll(concaveLatLng)
   .strokeColor(Color.parseColor("#66000000"))
