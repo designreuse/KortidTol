@@ -143,6 +143,7 @@ Polygon hullPolygon = map.addPolygon(new PolygonOptions()
 
 There's also a Concave Hull method which uses [code by Eric Grosso](http://www.rotefabrik.free.fr/concave_hull/). This is much more complex than the Quick Hull implementation, a native 'single-pass' conversion is beyond my capabilities (or at least available time). The method converts the LatLng array to points and back again so it will be much slower than the new native Quick Hull method above.
 ```java
+List<LatLng> polygonPoints = MapTools.getPoints(jsonString);
 double threshold = 30;
 ConcaveHull concaveHull = new ConcaveHull(polygonPoints, threshold, map.getProjection());
 final List<LatLng> concaveLatLng = concaveHull.getHull();
