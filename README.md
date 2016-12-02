@@ -38,6 +38,8 @@ In short:
 
 ##Limit Bounds
 
+** Note - onCameraChange is deprecated, and this method doesn't play nicely with setOnCameraMoveListener, will revisit (or remove this entirely) in the future **
+
 Limit the map to displaying a specific area, prevents the user scrolling away, useful if your app is local/location specific:
 
 ```java
