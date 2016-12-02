@@ -1,4 +1,4 @@
-package eu.fiskur.kortidtol;
+package eu.fiskur.kortidtol.convexhull;
 /*
  * Copyright (C) 2014 Jared Rummler <jared@jrummyapps.com>
  *

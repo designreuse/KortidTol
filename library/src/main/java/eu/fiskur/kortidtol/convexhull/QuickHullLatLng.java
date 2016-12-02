@@ -1,4 +1,4 @@
-package eu.fiskur.kortidtol;
+package eu.fiskur.kortidtol.convexhull;
 
 import com.google.android.gms.maps.model.LatLng;
 import com.google.maps.android.SphericalUtil;
