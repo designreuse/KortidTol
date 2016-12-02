@@ -113,7 +113,7 @@ There's a [Quick Hull](https://en.wikipedia.org/wiki/Quickhull) implementation i
 ### New method
 ```java
 List<LatLng> polygonPoints = MapTools.getPoints(jsonString);
-ArrayList<LatLng> hullLatLng = new QuickHullLatLng.quickHull(polygonPoints);
+ArrayList<LatLng> hullLatLng = new QuickHullLatLng().quickHull(polygonPoints);
 Polygon hullPolygon = map.addPolygon(new PolygonOptions()
   .addAll(hullLatLng)
   .strokeColor(Color.parseColor("#22000000"))
