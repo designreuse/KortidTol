@@ -145,7 +145,7 @@ There's also a Concave Hull method which uses [code by Eric Grosso](http://www.r
 ```java
 List<LatLng> polygonPoints = MapTools.getPoints(jsonString);
 double threshold = 30;
-final List<LatLng> concaveLatLng = new ConcaveHull(polygonPoints, threshold, map.getProjection()).getHull();
+List<LatLng> concaveLatLng = new ConcaveHull(polygonPoints, threshold, map.getProjection()).getHull();
 Polygon concavePolygon = map.addPolygon(new PolygonOptions()
   .addAll(concaveLatLng)
   .strokeColor(Color.parseColor("#66000000"))
