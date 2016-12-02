@@ -24,17 +24,10 @@ public class ConcaveHull {
   }
 
   public List<LatLng> getHull(){
-    List<Point> points = convertToPoint(polygonPoints, projection);
-    GeometryFactory gf = new GeometryFactory();
 
-    Coordinate[] coords = new Coordinate[points.size()];
+    Coordinate[] coords = convertToCoords(polygonPoints, projection);
+    GrossoConcaveHull ch = new GrossoConcaveHull(new GeometryFactory().createMultiPoint(coords), threshold);
 
-    for(int i = 0 ; i < coords.length ; i++){
-      Point p = points.get(i);
-      coords[i] = new Coordinate(p.x, p.y);
-    }
-
-    GrossoConcaveHull ch = new GrossoConcaveHull(gf.createMultiPoint(coords), threshold);
     Geometry concaveHull = ch.getConcaveHull();
 
     Coordinate[] hullCoords = concaveHull.getCoordinates();
@@ -42,16 +35,19 @@ public class ConcaveHull {
     return hullLatLngs;
   }
 
-  private List<Point> convertToPoint(List<LatLng> coords, Projection projection){
-    List<Point> points = new ArrayList<>();
-
-    for(LatLng coord : coords){
-      points.add(projection.toScreenLocation(coord));
+  private Coordinate[] convertToCoords(List<LatLng> latLngs, Projection projection){
+    int count = latLngs.size();
+    Coordinate[] coords = new Coordinate[count];
+    int index = 0;
+    for(LatLng latLng : latLngs){
+      Point p = projection.toScreenLocation(latLng);
+      coords[index] = new Coordinate(p.x, p.y);
+        index++;
     }
 
-    return points;
+    return coords;
   }
-
+  
   private List<LatLng> convertToLatLng(Coordinate[] coords){
     List<LatLng> latlngs = new ArrayList<>();
 
