@@ -141,7 +141,7 @@ Polygon hullPolygon = map.addPolygon(new PolygonOptions()
 
 <img src='images/concave_hulll.png'>
 
-There's also a Concave Hull method which uses [code by Eric Grosso](http://www.rotefabrik.free.fr/concave_hull/). This is much more complex than the Quick Hull implementation, a native 'single-pass' conversion is beyond my capabilities (or at least available time). The method converts the LatLng array to points and back again so it will be much slower than the new native Quick Hull method above.
+There's also a Concave Hull method which uses [code by Eric Grosso](http://www.rotefabrik.free.fr/concave_hull/). This is much more complex than the Quick Hull implementation, a native 'single-pass' conversion is beyond my capabilities (or at least available time). The method converts the LatLng array to points and back again so it will be much slower than the new native Quick Hull method above. A threshold of 30 reduces a ~5000 point polygon to ~800 points.
 ```java
 List<LatLng> polygonPoints = MapTools.getPoints(jsonString);
 double threshold = 30;
